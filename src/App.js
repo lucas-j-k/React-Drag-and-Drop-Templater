@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/header';
+import ComposerPanel from './components/composer-panel';
+import TemplateTray from './components/template-tray';
+import Footer from './components/footer';
+
+//Import the dummy data we are using in place of an API response. This come in as an array of objects:
+import templates from './dummy-data/templates'
 
 class App extends Component {
   render() {
+    console.log(templates);
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="App container" style={{backgroundColor: 'blue'}}>
+        <Header />
+        <ComposerPanel />
+        <TemplateTray />
+        <Footer />
       </div>
     );
   }

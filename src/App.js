@@ -14,7 +14,15 @@ class App extends Component {
     super(props);
     this.state= {
       templates: templateData,
-      navigation: navData
+      navigation: navData,
+      composerContents: [
+        {
+          text: "Lorem Ipsum dolor sic amet",
+        },
+        {
+        text: "Second paragraph...",
+        }
+    ]
     }
   }
 
@@ -22,7 +30,7 @@ class App extends Component {
     return (
       <div className="App container" style={{backgroundColor: 'blue'}}>
         <Header navigation={this.state.navigation} />
-        <ComposerPanel />
+        <ComposerPanel composerContents={this.state.composerContents} />
         <TemplateTray templates={this.state.templates} />
         <Footer />
       </div>

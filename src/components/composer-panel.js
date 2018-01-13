@@ -2,12 +2,25 @@ import React, { Component } from 'react';
 
 class ComposerPanel extends Component {
   render(){
+
+    //Map through the templates currently loaded into the composer array, and print them to the composer panel
+    const composerContents = this.props.composerContents.map((snippet, index)=>{
+      return <ComposerItem text={snippet.text} key={index} />;
+    });
+
     return (
       <div style={{backgroundColor: 'red'}}>
-        "This is the composer panel, the templates will be loaded into here as a list when they are clicked in the right hand tray"
+        {composerContents}
       </div>
     )
   }
+}
+
+
+function ComposerItem(props){
+  return (
+    <p>{props.text}<a href="">[X]</a></p>
+  )
 }
 
 export default ComposerPanel;

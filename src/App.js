@@ -15,14 +15,7 @@ class App extends Component {
     this.state= {
       templates: templateData,
       navigation: navData,
-      composerContents: [
-        {
-          text: "Lorem Ipsum dolor sic amet",
-        },
-        {
-        text: "Second paragraph...",
-        }
-    ]
+      composerContents: []
     }
     this.addToComposerContents = this.addToComposerContents.bind(this);
   }
@@ -30,10 +23,16 @@ class App extends Component {
 
 
   //Custom method to push a new snippet onto the composer contents state
-  addToComposerContents(text){
-    console.log("Add To Composer Contents: ", text);
+  addToComposerContents(templateToAdd){
+    let objectToAdd = {
+      id: templateToAdd.id,
+      text: templateToAdd.body
+    }
+    let updatedComposerContents = this.state.composerContents.slice();
+    updatedComposerContents.push(objectToAdd);
+    console.log(updatedComposerContents);
     this.setState(prevState => ({
-      composerContents: [{text: text}]
+      composerContents: updatedComposerContents
     }));
   }
 

@@ -24,6 +24,17 @@ class App extends Component {
         }
     ]
     }
+    this.addToComposerContents = this.addToComposerContents.bind(this);
+  }
+
+
+
+  //Custom method to push a new snippet onto the composer contents state
+  addToComposerContents(text){
+    console.log("Add To Composer Contents: ", text);
+    this.setState(prevState => ({
+      composerContents: [{text: text}]
+    }));
   }
 
   render() {
@@ -31,7 +42,7 @@ class App extends Component {
       <div className="App container" style={{backgroundColor: 'blue'}}>
         <Header navigation={this.state.navigation} />
         <ComposerPanel composerContents={this.state.composerContents} />
-        <TemplateTray templates={this.state.templates} />
+        <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />
         <Footer />
       </div>
     );

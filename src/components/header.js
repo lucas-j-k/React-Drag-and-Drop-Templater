@@ -9,13 +9,13 @@ class Header extends Component {
     });
 
     return (
-      <header style={{backgroundColor: 'yellow'}}>
-        <nav>
-          <ul>
-            {navLinks}
-          </ul>
-        </nav>
-      </header>
+        <header className="row" >
+          <nav className="navbar navbar-dark bg-dark col navbar-expand-md">
+            <ul className="navbar-nav">
+              {navLinks}
+            </ul>
+          </nav>
+        </header>
     )
   }
 }
@@ -23,7 +23,9 @@ class Header extends Component {
 
 function NavLink(props){
   return (
-    <li><a href={props.url} >{props.anchor}</a></li>
+    <li className="nav-item">
+      <a href={props.url} className="nav-link">{props.anchor}</a>
+    </li>
   )
 }
 

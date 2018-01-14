@@ -12,7 +12,6 @@ class TemplateTray extends Component {
   }
 
   handleClick(template, e){
-    console.log("Clicked::::", template, e.target);
     this.props.handleTrayClick(template);
   }
 
@@ -20,13 +19,13 @@ class TemplateTray extends Component {
     //Turn the array or template objects in props, into an array of React Child <li> nodes using .map().
     //We pass the id in as the 'key' prop, so React can keep track of which items change during a re-render cycle.
     const templatesList = this.props.templates.map((template)=>{
-      return <li key={template.id} onClick={(e) => this.handleClick(template, e)}>{template.label}</li>;
+      return <li key={template.id} onClick={(e) => this.handleClick(template, e)} className="btn-dark btn-block">{template.label}</li>;
     });
 
     //Return a div wrapping a list. Since the templatesList is an array of nodes, not just text, we can call it directly and React
     //will print out the markup:
     return (
-      <div style={{backgroundColor: 'goldenrod'}}>
+      <div className="col-md-5">
         <ul>
           {templatesList}
         </ul>

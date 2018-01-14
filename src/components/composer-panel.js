@@ -10,7 +10,6 @@ class ComposerPanel extends Component {
   //Handle when a user clicks delete icon inside a composer paragraph
   deleteSnippet(index, e){
     e.preventDefault();
-    console.log("Delete index:  ", index, e.target);
     this.props.deleteSnippetFromComposer(index);
   }
 
@@ -20,7 +19,7 @@ class ComposerPanel extends Component {
       return <p key={index}>{snippet.text}<a href="" onClick={(e) => this.deleteSnippet(index, e)}>[X] {index}</a></p>
     });
     return (
-      <div style={{backgroundColor: 'red'}}>
+      <div className="col-md-7">
         {composerContents}
       </div>
     )
@@ -28,10 +27,5 @@ class ComposerPanel extends Component {
 }
 
 
-// function ComposerItem(props){
-//   return (
-//
-//   )
-// }
 
 export default ComposerPanel;

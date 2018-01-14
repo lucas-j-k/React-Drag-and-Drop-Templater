@@ -20,18 +20,25 @@ class App extends Component {
     }
     this.addToComposerContents = this.addToComposerContents.bind(this);
     this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
+    this.updateComposerContents = this.updateComposerContents.bind(this);
   }
 
 
+  updateComposerContents(newArray){
+    this.setState(prevState => ({
+      // clipboard: newArray
+      updatedComposerContents: newArray
+    }));
+  }
 
   //Custom method to push a new snippet onto the composer contents state
-  addToComposerContents(templateToAdd){
-    let objectToAdd = {
-      id: templateToAdd.id,
-      text: templateToAdd.body
+  addToComposerContents(templateText){
+    let snippetToAdd = {
+      key: Math.floor(Math.random()*1000),
+      text: templateText
     }
     let updatedComposerContents = this.state.composerContents.slice();
-    updatedComposerContents.push(objectToAdd);
+    updatedComposerContents.push(snippetToAdd);
     this.setState(prevState => ({
       composerContents: updatedComposerContents
     }));
@@ -52,7 +59,7 @@ class App extends Component {
         <Header navigation={this.state.navigation} />
         <FlashBar message={"Flash messages go in here"} />
         <div className="row">
-          <ComposerPanel composerContents={this.state.composerContents} deleteSnippetFromComposer={this.deleteSnippetFromComposer} />
+          <ComposerPanel composerContents={this.state.composerContents} deleteSnippetFromComposer={this.deleteSnippetFromComposer} updateComposerContents={this.updateComposerContents}/>
           <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />
         </div>
         <Footer />

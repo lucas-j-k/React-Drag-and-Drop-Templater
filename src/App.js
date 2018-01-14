@@ -18,6 +18,7 @@ class App extends Component {
       composerContents: []
     }
     this.addToComposerContents = this.addToComposerContents.bind(this);
+    this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
   }
 
 
@@ -30,17 +31,25 @@ class App extends Component {
     }
     let updatedComposerContents = this.state.composerContents.slice();
     updatedComposerContents.push(objectToAdd);
-    console.log(updatedComposerContents);
     this.setState(prevState => ({
       composerContents: updatedComposerContents
     }));
+  }
+
+  //Delete a specific snippet from the composer state array
+  deleteSnippetFromComposer(index){
+    let updatedComposerContents = this.state.composerContents.slice();
+    updatedComposerContents.splice(index, 1);
+    this.setState({
+      composerContents: updatedComposerContents
+    });
   }
 
   render() {
     return (
       <div className="App container" style={{backgroundColor: 'blue'}}>
         <Header navigation={this.state.navigation} />
-        <ComposerPanel composerContents={this.state.composerContents} />
+        <ComposerPanel composerContents={this.state.composerContents} deleteSnippetFromComposer={this.deleteSnippetFromComposer} />
         <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />
         <Footer />
       </div>

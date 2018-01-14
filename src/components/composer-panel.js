@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dragula from 'react-dragula';
 
 class ComposerPanel extends Component {
 
@@ -19,11 +20,18 @@ class ComposerPanel extends Component {
       return <p key={index}>{snippet.text}<a href="" onClick={(e) => this.deleteSnippet(index, e)}>[X] {index}</a></p>
     });
     return (
-      <div className="col-md-7">
+      <div className="col-md-7" ref={this.dragulaDecorator}>
         {composerContents}
       </div>
     )
   }
+
+  dragulaDecorator = (componentBackingInstance) => {
+    if (componentBackingInstance) {
+      let options = { };
+      Dragula([componentBackingInstance], options);
+    }
+  };
 }
 
 

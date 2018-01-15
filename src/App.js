@@ -4,6 +4,7 @@ import ComposerPanel from './components/composer-panel';
 import TemplateTray from './components/template-tray';
 import Footer from './components/footer';
 import FlashBar from './components/flash-bar';
+import ControlBar from './components/control-bar';
 
 //Import the dummy data we are using in place of an API response.
 import templateData from './dummy-data/templates'
@@ -21,6 +22,7 @@ class App extends Component {
     this.addToComposerContents = this.addToComposerContents.bind(this);
     this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
     this.updateComposerContents = this.updateComposerContents.bind(this);
+    this.clearComposer = this.clearComposer.bind(this);
   }
 
 
@@ -53,11 +55,19 @@ class App extends Component {
     });
   }
 
+  //Clear the current composer contents state and re-render blank composer ComposerPanel
+  clearComposer(){
+    this.setState({
+      composerContents: []
+    })
+  }
+
   render() {
     return (
       <div className="App container-fluid p-2">
         <Header navigation={this.state.navigation} />
         <FlashBar message={"Flash messages go in here"} />
+        <ControlBar clearComposer={this.clearComposer} />
         <div className="row">
           <ComposerPanel composerContents={this.state.composerContents} deleteSnippetFromComposer={this.deleteSnippetFromComposer} updateComposerContents={this.updateComposerContents}/>
           <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />

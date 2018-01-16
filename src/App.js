@@ -4,7 +4,7 @@ import ComposerPanel from './components/composer-panel';
 import TemplateTray from './components/template-tray';
 import Footer from './components/footer';
 import FlashBar from './components/flash-bar';
-import ControlBar from './components/control-bar';
+
 
 //Import the dummy data we are using in place of an API response.
 import templateData from './dummy-data/templates'
@@ -67,9 +67,8 @@ class App extends Component {
       <div className="App container-fluid p-2">
         <Header navigation={this.state.navigation} />
         <FlashBar message={"Flash messages go in here"} />
-        <ControlBar clearComposer={this.clearComposer} />
         <div className="row">
-          <ComposerPanel composerContents={this.state.composerContents} deleteSnippetFromComposer={this.deleteSnippetFromComposer} updateComposerContents={this.updateComposerContents}/>
+          <ComposerPanel composerContents={this.state.composerContents} clearComposer={this.clearComposer} deleteSnippetFromComposer={this.deleteSnippetFromComposer} updateComposerContents={this.updateComposerContents}/>
           <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />
         </div>
         <Footer />

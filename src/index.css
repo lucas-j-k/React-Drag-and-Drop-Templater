@@ -10,3 +10,11 @@ body {
 .gu-mirror {
   display:none;
 }
+
+.gu-unselectable {
+  background-color: red;
+}
+
+.gu-transit {
+  background-color: blue;
+}

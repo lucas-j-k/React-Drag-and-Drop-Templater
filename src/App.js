@@ -23,15 +23,9 @@ class App extends Component {
     this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
     this.updateComposerContents = this.updateComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
+
   }
 
-
-  updateComposerContents(newArray){
-    this.setState(prevState => ({
-      // clipboard: newArray
-      updatedComposerContents: newArray
-    }));
-  }
 
   //Custom method to push a new snippet onto the composer contents state
   addToComposerContents(templateText){
@@ -55,6 +49,14 @@ class App extends Component {
     });
   }
 
+  //Reorder the composercontents state, based on the contents of the current composer panel.
+  updateComposerContents(updatedComposerContents){
+    /* TODO - Concat the text values of each object in the composer contents, then pass it down as a new prop, so we can render it in the textarea to copy */
+    this.setState({
+      composerContents: updatedComposerContents
+    });
+  }
+
   //Clear the current composer contents state and re-render blank composer ComposerPanel
   clearComposer(){
     this.setState({
@@ -68,7 +70,7 @@ class App extends Component {
         <Header navigation={this.state.navigation} />
         <FlashBar message={"Flash messages go in here"} />
         <div className="row">
-          <ComposerPanel composerContents={this.state.composerContents} clearComposer={this.clearComposer} deleteSnippetFromComposer={this.deleteSnippetFromComposer} updateComposerContents={this.updateComposerContents}/>
+          <ComposerPanel clipboard={this.state.clipboard} composerContents={this.state.composerContents} clearComposer={this.clearComposer} deleteSnippetFromComposer={this.deleteSnippetFromComposer} updateComposerContents={this.updateComposerContents} />
           <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />
         </div>
         <Footer />

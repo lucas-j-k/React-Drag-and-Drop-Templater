@@ -8,11 +8,11 @@ class ComposerPanel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      clipboard: []
+
     }
     //Bind custom methods to this
     this.deleteSnippet = this.deleteSnippet.bind(this);
-    this.populateClipboard = this.populateClipboard.bind(this);
+    this.reorderComposerContents = this.reorderComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
   }
 
@@ -20,20 +20,22 @@ class ComposerPanel extends Component {
   deleteSnippet(index, e){
     e.preventDefault();
     this.props.deleteSnippetFromComposer(index);
-    this.populateClipboard();
   }
 
-  //When a paragraph is re-ordered, we need to update the composer-contents State. Store it in local state then pass it up
-  //to the main app component state
-  populateClipboard(e){
+  //When a paragraph is re-ordered, we need to update the composer-contents State. Store it in local state.
+  reorderComposerContents(e){
     let nodeList = Array.from(this.paraList.children[0].children);
     console.log(nodeList);
     let mappedArray = nodeList.map((node, index)=>{
-      return node.textContent;
+      let elementKey = node.getAttribute('data-key');
+      let updatedArray = {
+        key: elementKey,
+        text: node.textContent
+      }
+      return updatedArray;
+
     });
-    this.setState({
-      clipboard: mappedArray
-    });
+    this.props.updateComposerContents(mappedArray);
   }
 
   clearComposer(){
@@ -43,24 +45,25 @@ class ComposerPanel extends Component {
   render(){
     //Map through the templates currently loaded into the composer array, and print them to the composer panel
     const composerContents = this.props.composerContents.map((snippet, index)=>{
-      return (<p key={snippet.key}>
+      return (<p key={snippet.key} data-key={snippet.key} >
               {snippet.text}
-              <button href="" onClick={(e) => this.deleteSnippet(index, e)}>[X] {index}</button>
+              <button href="" onClick={(e) => this.deleteSnippet(index, e)}></button>
               </p>)
     });
     return (
-      <div className="col-md-7 composer-wrapper">
+      <div className="col-md-7 composer-wrapper" onMouseUp={this.reorderComposerContents} >
         <ControlBar clearComposer={this.clearComposer} populateClipboard={this.populateClipboard} />
-        <div ref={(paraList)=>{ this.paraList = paraList }}>
+        <div ref={(paraList)=>{ this.paraList = paraList }} >
           <div ref={this.dragulaDecorator}>{composerContents}</div>
         </div>
+        <p style={{backgroundColor:"yellow",margin:25}}>{/* TODO Insert the composer contents in here to test */}</p>
       </div>
     )
   }
 
   dragulaDecorator = (componentBackingInstance) => {
     if (componentBackingInstance) {
-      let options = { };
+      let options = { revertOnSpill: true };
       Dragula([componentBackingInstance], options);
     }
   };

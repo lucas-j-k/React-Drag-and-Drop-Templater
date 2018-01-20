@@ -5,6 +5,29 @@ body {
 }
 
 
+/* Styling for modal */
+
+#modal-root {
+  position: relative;
+  z-index: 999;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.modal-body {
+  padding:20px;
+  background-color: green;
+}
+
+
 /* Styles for the drag and drop */
 
 .gu-mirror {

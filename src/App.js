@@ -4,6 +4,9 @@ import ComposerPanel from './components/composer-panel';
 import TemplateTray from './components/template-tray';
 import Footer from './components/footer';
 import FlashBar from './components/flash-bar';
+import Modal from './components/modal';
+import TestForm from './components/test-form';
+
 
 
 //Import the dummy data we are using in place of an API response.
@@ -17,15 +20,24 @@ class App extends Component {
     this.state= {
       templates: templateData,
       navigation: navData,
-      composerContents: []
+      composerContents: [],
+      showModal: false
     }
-    this.addToComposerContents = this.addToComposerContents.bind(this);
+    this.displayModal = this.displayModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
     this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
     this.updateComposerContents = this.updateComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
 
   }
 
+  displayModal(){
+    this.setState({ showModal:true });
+  }
+
+  hideModal(){
+    this.setState({ showModal:false });
+  }
 
   //Custom method to push a new snippet onto the composer contents state
   addToComposerContents(templateText){
@@ -65,6 +77,19 @@ class App extends Component {
   }
 
   render() {
+
+    //Check the state modal value to see if we render the modal using a ternary statement
+    const modalContent = this.state.showModal ? (
+      <Modal>
+        <div className="modal">
+          <div className="modal-body">
+            <TestForm />
+            <button onClick={ this.hideModal }>Close Modal</button>
+          </div>
+        </div>
+      </Modal>
+    ) : null;
+
     return (
       <div className="App container-fluid p-2">
         <Header navigation={this.state.navigation} />
@@ -74,6 +99,8 @@ class App extends Component {
           <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />
         </div>
         <Footer />
+        <button onClick={ this.displayModal }>Show Modal</button>
+        {modalContent}
       </div>
     );
   }

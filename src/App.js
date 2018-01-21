@@ -11,7 +11,7 @@ import Modal from './components/modal';
 import LoginForm from './components/forms/login-form';
 import RegistrationForm from './components/forms/registration-form';
 import CreateTemplateForm from './components/forms/create-template-form';
-import EditTemplateForm from './components/forms/create-template-form';
+import EditTemplateForm from './components/forms/edit-template-form';
 
 //Import the dummy data we are using in place of an API response.
 import templateData from './dummy-data/templates'
@@ -26,7 +26,12 @@ class App extends Component {
       navigation: navData,
       composerContents: [],
       showModal: false,
-      form: "login"
+      form: null,
+      currentlyEditing: {
+        id: "",
+        label: "",
+        content: ""
+      }
     }
     this.displayModal = this.displayModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -34,7 +39,8 @@ class App extends Component {
     this.updateComposerContents = this.updateComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
     this.addToComposerContents = this.addToComposerContents.bind(this);
-    this.setForm = this.setForm.bind(this);
+    this.openCreateForm = this.openCreateForm.bind(this);
+    this.openEditForm = this.openEditForm.bind(this);
 
   }
 
@@ -43,11 +49,28 @@ class App extends Component {
   }
 
   hideModal(){
-    this.setState({ showModal:false });
+    this.setState({ showModal:false, form:null });
   }
 
-  setForm(formName){
-    this.setState({form: formName, showModal: true});
+  openCreateForm(){
+    this.setState({
+      form: "create-template",
+      showModal: true
+    });
+  }
+
+  openEditForm(templateId, templateLabel, templateContent){
+    let templateToEdit = {
+      id: templateId,
+      label: templateLabel,
+      content: templateContent
+    }
+    console.log("To Edit....", templateToEdit)
+    this.setState({
+      currentlyEditing: templateToEdit,
+      form: "edit-template",
+      showModal: true
+    });
   }
 
   //Custom method to push a new snippet onto the composer contents state
@@ -89,18 +112,22 @@ class App extends Component {
 
   render() {
 
-    let formToRender;
-    //Check the state to see which form to load in the modalContent
+    let formToRender = "";
+    // Check the state to see which form to load in the modalContent
     switch(this.state.form) {
     case "create-template":
         formToRender = <CreateTemplateForm />;
+        break;
+    case "edit-template":
+        formToRender = <EditTemplateForm currentlyEditing={this.state.currentlyEditing} />;
         break;
     default:
         formToRender = null;
 }
 
+
     //Check the state modal value to see if we render the modal using a ternary statement
-    const modalContent = this.state.showModal ? (
+    let modalContent = this.state.showModal ? (
       <Modal>
         <div className="modal">
           <div className="modal-body">
@@ -120,11 +147,11 @@ class App extends Component {
             clipboard={this.state.clipboard}
             composerContents={this.state.composerContents}
             clearComposer={this.clearComposer}
-            openCreateTemplateForm={this.setForm}
+            openCreateTemplateForm={this.openCreateForm}
             deleteSnippetFromComposer={this.deleteSnippetFromComposer}
             updateComposerContents={this.updateComposerContents}
           />
-          <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />
+          <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} openEditForm={this.openEditForm} />
         </div>
         <Footer />
         <button onClick={ this.displayModal }>Show Modal</button>

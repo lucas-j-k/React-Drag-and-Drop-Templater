@@ -18,7 +18,7 @@ class ControlBar extends Component {
   }
 
   openCreateTemplateForm(formName){
-    this.props.openCreateTemplateForm(formName);
+    this.props.openCreateTemplateForm();
   }
 
   render(){
@@ -27,7 +27,7 @@ class ControlBar extends Component {
         <div className="col">
           <button onClick={(e) => this.handleCopyClick(e)}>Copy</button>
           <button onClick={(e) => this.handleClearClick(e)}>Clear</button>
-          <button onClick={(e) => this.openCreateTemplateForm("create-template")}>Add Template</button>
+          <button onClick={(e) => this.openCreateTemplateForm()}>Add Template</button>
         </div>
       </div>
     )

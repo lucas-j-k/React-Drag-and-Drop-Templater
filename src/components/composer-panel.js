@@ -43,8 +43,8 @@ class ComposerPanel extends Component {
     this.props.clearComposer();
   }
 
-  openCreateTemplateForm(formName){
-    this.props.openCreateTemplateForm(formName);
+  openCreateTemplateForm(){
+    this.props.openCreateTemplateForm();
   }
 
   render(){

@@ -139,10 +139,10 @@ class App extends Component {
     ) : null;
 
     return (
-      <div className="App container-fluid p-2">
+      <div className="App app-container">
         <Header navigation={this.state.navigation} />
         <FlashBar message={"Flash messages go in here"} />
-        <div className="row">
+        <div className="interface-wrapper">
           <ComposerPanel
             clipboard={this.state.clipboard}
             composerContents={this.state.composerContents}
@@ -154,7 +154,6 @@ class App extends Component {
           <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} openEditForm={this.openEditForm} />
         </div>
         <Footer />
-        <button onClick={ this.displayModal }>Show Modal</button>
         {modalContent}
       </div>
     );

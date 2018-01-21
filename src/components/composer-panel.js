@@ -50,20 +50,22 @@ class ComposerPanel extends Component {
   render(){
     //Map through the templates currently loaded into the composer array, and print them to the composer panel
     const composerContents = this.props.composerContents.map((snippet, index)=>{
-      return (<p key={snippet.key} data-key={snippet.key} >
-              {snippet.text}
-              <button href="" onClick={(e) => this.deleteSnippet(index, e)}></button>
+      return (<p className="composer-panel__paragraph" key={snippet.key} data-key={snippet.key} >
+              <span className="composer-panel__paragraph-text">{snippet.text}</span>
+              <span className="composer-panel__delete-button" href="" onClick={(e) => this.deleteSnippet(index, e)}>
+                <i class="composer-panel__delete-icon fa fa-window-close" aria-hidden="true"></i>
+              </span>
               </p>)
     });
     return (
-      <div className="col-md-7 composer-wrapper" onMouseUp={this.reorderComposerContents} >
+      <div className="col-md-7 composer-panel__wrapper" onMouseUp={this.reorderComposerContents} >
         <ControlBar
           clearComposer={this.clearComposer}
           populateClipboard={this.populateClipboard}
           openCreateTemplateForm={this.openCreateTemplateForm}
         />
-        <div ref={(paraList)=>{ this.paraList = paraList }} >
-          <div ref={this.dragulaDecorator}>{composerContents}</div>
+        <div className="composer-panel__main" ref={(paraList)=>{ this.paraList = paraList }} >
+          <div className="composer-panel__contents" ref={this.dragulaDecorator}>{composerContents}</div>
         </div>
         <p style={{backgroundColor:"yellow",margin:25}}>{/* TODO Insert the composer contents in here to test */}</p>
       </div>

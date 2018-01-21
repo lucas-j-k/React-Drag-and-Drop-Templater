@@ -9,12 +9,13 @@ class Header extends Component {
     });
 
     return (
-        <header className="row" >
-          <nav className="navbar navbar-dark bg-dark col navbar-expand-md">
-            <ul className="navbar-nav">
+        <header className="header-bar" >
+          <nav className="header-bar__nav">
+            <ul className="header-bar__navlist">
               {navLinks}
             </ul>
           </nav>
+          <div className="header-bar__user">UserName goes here</div>
         </header>
     )
   }
@@ -23,8 +24,8 @@ class Header extends Component {
 
 function NavLink(props){
   return (
-    <li className="nav-item">
-      <a href={props.url} className="nav-link">{props.anchor}</a>
+    <li className="header-bar__navlist-item">
+      <a href={props.url} className="header-bar__nav-link">{props.anchor}</a>
     </li>
   )
 }

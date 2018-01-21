@@ -23,11 +23,11 @@ class ControlBar extends Component {
 
   render(){
     return (
-      <div className="row">
-        <div className="col">
-          <button onClick={(e) => this.handleCopyClick(e)}>Copy</button>
-          <button onClick={(e) => this.handleClearClick(e)}>Clear</button>
-          <button onClick={(e) => this.openCreateTemplateForm()}>Add Template</button>
+      <div className="control-bar">
+        <div className="control-bar__button-tray">
+          <button className="control-bar__button button" onClick={(e) => this.handleCopyClick(e)}>Copy</button>
+          <button className="control-bar__button button" onClick={(e) => this.handleClearClick(e)}>Clear</button>
+          <button className="control-bar__button button" onClick={(e) => this.openCreateTemplateForm()}>Add Template</button>
         </div>
       </div>
     )

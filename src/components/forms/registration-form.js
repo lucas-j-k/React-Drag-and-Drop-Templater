@@ -7,6 +7,7 @@ class RegistrationForm extends Component {
   render() {
     return (
       <form>
+        <h2>Sign Up</h2>
         <div className="form-group">
           <label for="firstName">First Name</label>
           <input type="text" name="firstName" />

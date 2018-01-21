@@ -25,7 +25,8 @@ class App extends Component {
       templates: templateData,
       navigation: navData,
       composerContents: [],
-      showModal: false
+      showModal: false,
+      form: "login"
     }
     this.displayModal = this.displayModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -33,6 +34,7 @@ class App extends Component {
     this.updateComposerContents = this.updateComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
     this.addToComposerContents = this.addToComposerContents.bind(this);
+    this.setForm = this.setForm.bind(this);
 
   }
 
@@ -42,6 +44,10 @@ class App extends Component {
 
   hideModal(){
     this.setState({ showModal:false });
+  }
+
+  setForm(formName){
+    this.setState({form: formName, showModal: true});
   }
 
   //Custom method to push a new snippet onto the composer contents state
@@ -83,14 +89,22 @@ class App extends Component {
 
   render() {
 
+    let formToRender;
+    //Check the state to see which form to load in the modalContent
+    switch(this.state.form) {
+    case "create-template":
+        formToRender = <CreateTemplateForm />;
+        break;
+    default:
+        formToRender = null;
+}
+
     //Check the state modal value to see if we render the modal using a ternary statement
     const modalContent = this.state.showModal ? (
       <Modal>
         <div className="modal">
           <div className="modal-body">
-            <LoginForm />
-            <RegistrationForm />
-            <CreateTemplateForm />
+            {formToRender}
             <button onClick={ this.hideModal }>Close Modal</button>
           </div>
         </div>
@@ -102,7 +116,14 @@ class App extends Component {
         <Header navigation={this.state.navigation} />
         <FlashBar message={"Flash messages go in here"} />
         <div className="row">
-          <ComposerPanel clipboard={this.state.clipboard} composerContents={this.state.composerContents} clearComposer={this.clearComposer} deleteSnippetFromComposer={this.deleteSnippetFromComposer} updateComposerContents={this.updateComposerContents} />
+          <ComposerPanel
+            clipboard={this.state.clipboard}
+            composerContents={this.state.composerContents}
+            clearComposer={this.clearComposer}
+            openCreateTemplateForm={this.setForm}
+            deleteSnippetFromComposer={this.deleteSnippetFromComposer}
+            updateComposerContents={this.updateComposerContents}
+          />
           <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} />
         </div>
         <Footer />

@@ -11,6 +11,7 @@ class EditTemplateForm extends Component {
   render() {
     return (
       <form>
+        <h2>Edit Template</h2>
         <div className="form-group">
           <label for="templateLabel">Label</label>
           <input type="text" name="templateLabel" />

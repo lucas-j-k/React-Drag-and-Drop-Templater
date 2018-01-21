@@ -14,6 +14,7 @@ class ComposerPanel extends Component {
     this.deleteSnippet = this.deleteSnippet.bind(this);
     this.reorderComposerContents = this.reorderComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
+    this.openCreateTemplateForm = this.openCreateTemplateForm.bind(this);
   }
 
   //Handle when a user clicks delete icon inside a composer paragraph
@@ -42,6 +43,10 @@ class ComposerPanel extends Component {
     this.props.clearComposer();
   }
 
+  openCreateTemplateForm(formName){
+    this.props.openCreateTemplateForm(formName);
+  }
+
   render(){
     //Map through the templates currently loaded into the composer array, and print them to the composer panel
     const composerContents = this.props.composerContents.map((snippet, index)=>{
@@ -52,7 +57,11 @@ class ComposerPanel extends Component {
     });
     return (
       <div className="col-md-7 composer-wrapper" onMouseUp={this.reorderComposerContents} >
-        <ControlBar clearComposer={this.clearComposer} populateClipboard={this.populateClipboard} />
+        <ControlBar
+          clearComposer={this.clearComposer}
+          populateClipboard={this.populateClipboard}
+          openCreateTemplateForm={this.openCreateTemplateForm}
+        />
         <div ref={(paraList)=>{ this.paraList = paraList }} >
           <div ref={this.dragulaDecorator}>{composerContents}</div>
         </div>

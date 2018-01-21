@@ -7,6 +7,7 @@ class LoginForm extends Component {
   render() {
     return (
       <form>
+        <h2>Login</h2>
         <div className="form-group">
           <label for="email">Email</label>
           <input type="email" name="email" />

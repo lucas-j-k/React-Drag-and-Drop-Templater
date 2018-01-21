@@ -7,6 +7,7 @@ class CreateTemplateForm extends Component {
   render() {
     return (
       <form>
+      <h2>Create a New Template</h2>
         <div className="form-group">
           <label for="templateLabel">Label</label>
           <input type="text" name="templateLabel" />

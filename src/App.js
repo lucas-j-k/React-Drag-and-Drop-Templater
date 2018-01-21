@@ -132,7 +132,7 @@ class App extends Component {
         <div className="modal">
           <div className="modal-body">
             {formToRender}
-            <button onClick={ this.hideModal }>Close Modal</button>
+            <button className="button button--negative modal__close" onClick={ this.hideModal }>Close Modal</button>
           </div>
         </div>
       </Modal>

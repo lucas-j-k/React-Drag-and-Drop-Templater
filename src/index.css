@@ -24,6 +24,32 @@ body {
   background-color: #090A0A;
 }
 
+.button {
+  padding:0.4em 0.75em;
+  border-radius:0.5em;
+  background-color: #090A0A;
+  color: #DBE0E4;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button--positive {
+  border: 1px solid #065408;
+}
+
+.button--positive:hover {
+  background:#065408;
+}
+
+.button--negative {
+  border: 1px solid #E83F1B;
+}
+
+.button--negative:hover {
+  background: #E83F1B;
+}
 
 .app-container {
   width:100%;
@@ -154,7 +180,6 @@ body {
 
 .control-bar__button {
   margin-left: 1em;
-  border:0px;
   background: #090A0A;
 }
 
@@ -207,7 +232,7 @@ body {
 }
 
 .modal {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.75);
   position: fixed;
   height: 100%;
   width: 100%;
@@ -217,9 +242,64 @@ body {
 }
 
 .modal-body {
-  padding:20px;
-  background-color: green;
+  width:60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  background: #090A0A;
+  padding:2em;
+  border: 1px #DBE0E4 solid;
 }
+
+.modal__close {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  display: block;
+}
+
+/* =========================== */
+/* MODAL FORMS */
+/* =========================== */
+
+.modal-form {
+  margin-bottom:1em;
+  margin-left: auto;
+  margin-right: auto;
+  width:95%;
+}
+
+.modal-form__heading {
+  font-size:1.2em;
+  margin-bottom: 0.75em;
+  border-bottom: 1px #DBE0E4 solid;
+  padding-bottom:0.2em;
+}
+
+.modal-form__form-group {
+  margin-bottom:1em;
+}
+
+.modal-form__label {
+  display:block;
+  margin-bottom:0.5em;
+}
+
+.modal-form__input {
+  display:block;
+  width:100%;
+  margin:auto;
+  color:#090A0A;
+}
+
+.modal-form__textarea {
+
+}
+
+.modal-form__submit {
+
+}
+
 
 
 /* =========================== */

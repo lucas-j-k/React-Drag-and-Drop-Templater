@@ -25,9 +25,9 @@ class ControlBar extends Component {
     return (
       <div className="control-bar">
         <div className="control-bar__button-tray">
-          <button className="control-bar__button button" onClick={(e) => this.handleCopyClick(e)}>Copy</button>
-          <button className="control-bar__button button" onClick={(e) => this.handleClearClick(e)}>Clear</button>
-          <button className="control-bar__button button" onClick={(e) => this.openCreateTemplateForm()}>Add Template</button>
+          <button className="control-bar__button button button--positive" onClick={(e) => this.handleCopyClick(e)}>Copy</button>
+          <button className="control-bar__button button button--negative" onClick={(e) => this.handleClearClick(e)}>Clear</button>
+          <button className="control-bar__button button button--positive" onClick={(e) => this.openCreateTemplateForm()}>Add Template</button>
         </div>
       </div>
     )

@@ -5,9 +5,13 @@ import TemplateTray from './components/template-tray';
 import Footer from './components/footer';
 import FlashBar from './components/flash-bar';
 import Modal from './components/modal';
-import TestForm from './components/test-form';
 
 
+//Import the form modules
+import LoginForm from './components/forms/login-form';
+import RegistrationForm from './components/forms/registration-form';
+import CreateTemplateForm from './components/forms/create-template-form';
+import EditTemplateForm from './components/forms/create-template-form';
 
 //Import the dummy data we are using in place of an API response.
 import templateData from './dummy-data/templates'
@@ -28,6 +32,7 @@ class App extends Component {
     this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
     this.updateComposerContents = this.updateComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
+    this.addToComposerContents = this.addToComposerContents.bind(this);
 
   }
 
@@ -83,7 +88,9 @@ class App extends Component {
       <Modal>
         <div className="modal">
           <div className="modal-body">
-            <TestForm />
+            <LoginForm />
+            <RegistrationForm />
+            <CreateTemplateForm />
             <button onClick={ this.hideModal }>Close Modal</button>
           </div>
         </div>

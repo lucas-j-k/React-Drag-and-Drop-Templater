@@ -56,6 +56,7 @@ body {
 }
 
 
+
 /* =========================== */
 /* HEADER BAR */
 /* =========================== */
@@ -261,6 +262,54 @@ body {
 }
 
 /* =========================== */
+/* GENERIC FORMS */
+/* =========================== */
+
+form {
+
+}
+
+.form__heading {
+  font-size:1.2em;
+  margin-bottom: 0.75em;
+  border-bottom: 1px #DBE0E4 solid;
+  padding-bottom:0.2em;
+}
+
+.form-group {
+  margin-bottom:1em;
+}
+
+.form__label {
+  display:block;
+  margin-bottom:0.5em;
+}
+
+.form__input {
+  display:block;
+  width:100%;
+  margin:auto;
+  color:#090A0A;
+}
+
+.form__submit {
+
+}
+
+
+/* =========================== */
+/* USER FORMS (LOGIN/SIGNUP) */
+/* =========================== */
+
+.user-form {
+  margin-bottom:10em;
+  margin-left: auto;
+  margin-right: auto;
+  width:50%;
+}
+
+
+/* =========================== */
 /* MODAL FORMS */
 /* =========================== */
 
@@ -271,35 +320,9 @@ body {
   width:95%;
 }
 
-.modal-form__heading {
-  font-size:1.2em;
-  margin-bottom: 0.75em;
-  border-bottom: 1px #DBE0E4 solid;
-  padding-bottom:0.2em;
-}
-
-.modal-form__form-group {
-  margin-bottom:1em;
-}
-
-.modal-form__label {
-  display:block;
-  margin-bottom:0.5em;
-}
-
-.modal-form__input {
-  display:block;
-  width:100%;
-  margin:auto;
-  color:#090A0A;
-}
 
 .modal-form__textarea {
-
-}
-
-.modal-form__submit {
-
+  height:8em;
 }
 
 

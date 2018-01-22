@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import Header from './components/header';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import ComposerPanel from './components/composer-panel';
 import TemplateTray from './components/template-tray';
 import Footer from './components/footer';
 import FlashBar from './components/flash-bar';
 import Modal from './components/modal';
 
+//Import the master components for each route
+import Homepage from './components/homepage';
+import Login from './components/login'
+import SignUp from './components/sign-up'
 
 //Import the form modules
-import LoginForm from './components/forms/login-form';
-import RegistrationForm from './components/forms/registration-form';
 import CreateTemplateForm from './components/forms/create-template-form';
 import EditTemplateForm from './components/forms/edit-template-form';
 
 //Import the dummy data we are using in place of an API response.
 import templateData from './dummy-data/templates'
-import navData from './dummy-data/nav'
 
 class App extends Component {
 
@@ -23,7 +25,6 @@ class App extends Component {
     super(props);
     this.state= {
       templates: templateData,
-      navigation: navData,
       composerContents: [],
       showModal: false,
       form: null,
@@ -142,17 +143,25 @@ class App extends Component {
       <div className="App app-container">
         <Header navigation={this.state.navigation} />
         <FlashBar message={"Flash messages go in here"} />
-        <div className="interface-wrapper">
-          <ComposerPanel
-            clipboard={this.state.clipboard}
-            composerContents={this.state.composerContents}
-            clearComposer={this.clearComposer}
-            openCreateTemplateForm={this.openCreateForm}
-            deleteSnippetFromComposer={this.deleteSnippetFromComposer}
-            updateComposerContents={this.updateComposerContents}
-          />
-          <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} openEditForm={this.openEditForm} />
-        </div>
+        <Switch>
+          <Route exact path='/' component={Homepage} />
+          <Route path='/app' render={() => (
+            <div className="interface-wrapper">
+              <ComposerPanel
+                clipboard={this.state.clipboard}
+                composerContents={this.state.composerContents}
+                clearComposer={this.clearComposer}
+                openCreateTemplateForm={this.openCreateForm}
+                deleteSnippetFromComposer={this.deleteSnippetFromComposer}
+                updateComposerContents={this.updateComposerContents}
+              />
+              <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} openEditForm={this.openEditForm} />
+            </div>
+          )} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/sign-up' component={SignUp} />
+        </Switch>
+
         <Footer />
         {modalContent}
       </div>

@@ -53,7 +53,7 @@ class ComposerPanel extends Component {
       return (<p className="composer-panel__paragraph" key={snippet.key} data-key={snippet.key} >
               <span className="composer-panel__paragraph-text">{snippet.text}</span>
               <span className="composer-panel__delete-button" href="" onClick={(e) => this.deleteSnippet(index, e)}>
-                <i class="composer-panel__delete-icon fa fa-window-close" aria-hidden="true"></i>
+                <i className="composer-panel__delete-icon fa fa-window-close" aria-hidden="true"></i>
               </span>
               </p>)
     });

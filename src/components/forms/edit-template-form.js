@@ -12,18 +12,18 @@ class EditTemplateForm extends Component {
   render() {
     return (
       <form className="modal-form">
-        <h2 className="modal-form__heading">Edit Template - {this.props.currentlyEditing.label}</h2>
+        <h2 className="modal-form__heading form__heading">Edit Template - {this.props.currentlyEditing.label}</h2>
         <input type="hidden" name="templateId" defaultValue={this.props.currentlyEditing.id} />
-        <div className="modal-form__form-group">
-          <label for="templateLabel" className="modal-form__label">Label</label>
-          <input type="text" name="templateLabel" defaultValue={this.props.currentlyEditing.label} className="modal-form__input" />
+        <div className="modal-form__form-group form-group">
+          <label for="templateLabel" className="modal-form__label form__label">Label</label>
+          <input type="text" name="templateLabel" defaultValue={this.props.currentlyEditing.label} className="modal-form__input form__input" />
         </div>
-        <div className="modal-form__form-group">
-          <label for="templateContent" className="modal-form__label">Text</label>
-          <textarea name="templateContent" defaultValue={this.props.currentlyEditing.content} className="modal-form__input modal-form__textarea" />
+        <div className="modal-form__form-group form-group">
+          <label for="templateContent" className="modal-form__label form__label">Text</label>
+          <textarea name="templateContent" defaultValue={this.props.currentlyEditing.content} className="modal-form__input modal-form__textarea form__input form__textarea" />
         </div>
-        <div className="modal-form__form-group">
-          <input type="submit" name="submit" className="modal-form__submit button button--positive" />
+        <div className="modal-form__form-group form-group">
+          <input type="submit" name="submit" className="modal-form__submit button button--positive form__submit" />
         </div>
 
       </form>

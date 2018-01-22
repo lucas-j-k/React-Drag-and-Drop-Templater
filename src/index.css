@@ -63,7 +63,8 @@ body {
 .header-bar {
   display:flex;
   justify-content: space-between;
-  padding:1em;
+  padding:0.3em;
+  margin-bottom: 1em;
 }
 
 .header-bar__nav {
@@ -75,7 +76,7 @@ body {
 }
 
 .header-bar__navlist-item {
-  margin-left: 0.5em;
+  margin-left: 0.3em;
   padding:0.2em;
 }
 
@@ -131,6 +132,7 @@ body {
 
 .interface-wrapper {
   display:flex;
+  padding:0.25em;
 }
 
 .composer-panel__wrapper {
@@ -315,5 +317,13 @@ body {
 }
 
 .gu-transit {
+  background-color: rgba(0,0,0,0.8);
+}
 
+.gu-transit .composer-panel__delete-icon {
+  display:none;
+}
+
+.gu-transit .composer-panel__paragraph-text {
+  color: #DBE0E4;
 }

@@ -190,6 +190,8 @@ body {
 .template-tray {
   width:30%;
   padding-top:2em;
+  height: 350px;
+  overflow-y: scroll;
 }
 
 .template-tray__list {

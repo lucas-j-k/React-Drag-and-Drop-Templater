@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 //Store the modal root node from the dom in a constant:

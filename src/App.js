@@ -19,6 +19,10 @@ import CreateTemplateForm from './components/forms/create-template-form';
 import EditTemplateForm from './components/forms/edit-template-form';
 
 
+//API root url
+const APIROOT = "http://localhost:3001/api/";
+
+
 class App extends Component {
 
   constructor(props){
@@ -46,16 +50,21 @@ class App extends Component {
   }
 
   componentDidMount(){
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get(APIROOT + "all-templates/")
       .then((response)=>{
-        let fetchedData = response.data.map((row) => {
+        
+        let fetchedData = response.data.map((record) => {
+          let replacedBody = record.body.replace(/&quot;/g, '"');
+          let parsedBody = JSON.parse(replacedBody);
           let fetchedTemplate = {
-            id: row.id,
-            label: row.title,
-            body: row.body
+            id: record.id,
+            label: record.label,
+            body: parsedBody
           };
+          console.log(parsedBody);
           return fetchedTemplate;
         });
+
         this.setState({ templates: fetchedData });
       });
   }

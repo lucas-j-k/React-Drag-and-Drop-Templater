@@ -26,7 +26,6 @@ class ComposerPanel extends Component {
   //When a paragraph is re-ordered, we need to update the composer-contents State. Store it in local state.
   reorderComposerContents(e){
     let nodeList = Array.from(this.paraList.children[0].children);
-    console.log(nodeList);
     let mappedArray = nodeList.map((node, index)=>{
       let elementKey = node.getAttribute('data-key');
       let updatedArray = {

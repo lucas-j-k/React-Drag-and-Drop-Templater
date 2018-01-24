@@ -66,7 +66,7 @@ class ComposerPanel extends Component {
         <div className="composer-panel__main" ref={(paraList)=>{ this.paraList = paraList }} >
           <div className="composer-panel__contents" ref={this.dragulaDecorator}>{composerContents}</div>
         </div>
-        <p style={{backgroundColor:"yellow",margin:25}}>{/* TODO Insert the composer contents in here to test */}</p>
+        
       </div>
     )
   }

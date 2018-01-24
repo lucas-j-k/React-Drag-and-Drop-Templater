@@ -52,7 +52,7 @@ class App extends Component {
   componentDidMount(){
     axios.get(APIROOT + "all-templates/")
       .then((response)=>{
-        
+
         let fetchedData = response.data.map((record) => {
           let replacedBody = record.body.replace(/&quot;/g, '"');
           let parsedBody = JSON.parse(replacedBody);
@@ -97,17 +97,18 @@ class App extends Component {
     });
   }
 
-  //Custom method to push a new snippet onto the composer contents state
+  //Custom method to push a new snippet onto the composer contents state. The templateText is an array based on each line of text, so we
+  //loop through and create each line inside its own paragraph tag.
   addToComposerContents(templateText){
-    let snippetToAdd = {
-      key: Math.floor(Math.random()*1000),
-      text: templateText
-    }
     let updatedComposerContents = this.state.composerContents.slice();
-    updatedComposerContents.push(snippetToAdd);
-    this.setState(prevState => ({
-      composerContents: updatedComposerContents
-    }));
+    for(let i = 0; i<templateText.length; i++){
+      let snippetToAdd = {
+        key: Math.floor(Math.random()*100000),
+        text: templateText[i]
+      }
+      updatedComposerContents.push(snippetToAdd);
+    }
+    this.setState({ composerContents: updatedComposerContents });
   }
 
   //Delete a specific snippet from the composer state array

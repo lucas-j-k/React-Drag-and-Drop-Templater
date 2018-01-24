@@ -13,6 +13,7 @@ class TemplateTray extends Component {
   }
 
   handleClick(templateText, e){
+    console.log(templateText);
     this.props.handleTrayClick(templateText);
   }
 

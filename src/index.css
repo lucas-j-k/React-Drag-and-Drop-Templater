@@ -142,7 +142,7 @@ body {
 
 .composer-panel__main {
   background: #DBE0E4;
-  height: 350px;
+  height: 450px;
   overflow-y: scroll;
 }
 
@@ -190,7 +190,7 @@ body {
 .template-tray {
   width:30%;
   padding-top:2em;
-  height: 350px;
+  height: 450px;
   overflow-y: scroll;
 }
 

@@ -40,23 +40,23 @@ class RegistrationForm extends Component {
       <form className="user-form" onSubmit={this.handleSubmit}>
         <h2 className="user-form__heading form__heading">Sign Up</h2>
         <div className="form-group user-form__form-group">
-          <label for="firstName" className="user-form__label form__label">First Name</label>
+          <label htmlFor="firstName" className="user-form__label form__label">First Name</label>
           <input type="text" name="firstName" className="user-form__input form__input" value={this.state.firstName} onChange={this.handleInputChange} />
         </div>
         <div className="form-group user-form__form-group">
-          <label for="lastName" className="user-form__label form__label">Last Name</label>
+          <label htmlFor="lastName" className="user-form__label form__label">Last Name</label>
           <input type="text" name="lastName" className="user-form__input form__input" value={this.state.lastName} onChange={this.handleInputChange} />
         </div>
         <div className="form-group user-form__form-group">
-          <label for="email" className="user-form__label form__label">Email</label>
+          <label htmlFor="email" className="user-form__label form__label">Email</label>
           <input type="email" name="email" className="user-form__input form__input" value={this.state.email} onChange={this.handleInputChange} />
         </div>
         <div className="form-group user-form__form-group">
-          <label for="password" className="user-form__label form__label">Password</label>
+          <label htmlFor="password" className="user-form__label form__label">Password</label>
           <input type="password" name="password" className="user-form__input form__input" value={this.state.password} onChange={this.handleInputChange} />
         </div>
         <div className="form-group user-form__form-group">
-          <label for="passwordConfirm" className="user-form__label form__label">Confirm Password</label>
+          <label htmlFor="passwordConfirm" className="user-form__label form__label">Confirm Password</label>
           <input type="password" name="passwordConfirm" className="user-form__input form__input" value={this.state.passwordConfirm} onChange={this.handleInputChange} />
         </div>
         <div className="form-group user-form__form-group">

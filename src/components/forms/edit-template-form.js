@@ -36,11 +36,11 @@ class EditTemplateForm extends Component {
         <h2 className="modal-form__heading form__heading">Edit Template - {this.props.currentlyEditing.label}</h2>
         <input type="hidden" name="templateId" defaultValue={this.props.currentlyEditing.id} />
         <div className="modal-form__form-group form-group">
-          <label for="templateLabel" className="modal-form__label form__label">Label</label>
+          <label htmlFor="templateLabel" className="modal-form__label form__label">Label</label>
           <input type="text" name="templateLabel" className="modal-form__input form__input" onChange={this.handleInputChange} value={this.state.templateLabel} />
         </div>
         <div className="modal-form__form-group form-group">
-          <label for="templateContent" className="modal-form__label form__label">Text</label>
+          <label htmlFor="templateContent" className="modal-form__label form__label">Text</label>
           <textarea name="templateContent" className="modal-form__input modal-form__textarea form__input form__textarea" onChange={this.handleInputChange} value={this.state.templateContent} />
         </div>
         <div className="modal-form__form-group form-group">

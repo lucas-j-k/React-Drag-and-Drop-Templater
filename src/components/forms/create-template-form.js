@@ -33,11 +33,11 @@ class CreateTemplateForm extends Component {
       <form className="modal-form" onSubmit={this.handleSubmit}>
       <h2 className="modal-form__heading form__heading">Create a New Template</h2>
         <div className="modal-form__form-group form-group">
-          <label for="templateLabel" className="modal-form__label form__label">Label</label>
+          <label htmlFor="templateLabel" className="modal-form__label form__label">Label</label>
           <input type="text" name="templateLabel" className="modal-form__input form__input" onChange={this.handleInputChange} value={this.state.templateLabel} />
         </div>
         <div className="modal-form__form-group form-group">
-          <label for="templateContent" className="modal-form__label form__label">Text</label>
+          <label htmlFor="templateContent" className="modal-form__label form__label">Text</label>
           <textarea name="templateContent" className="modal-form__input form__input modal-form__textarea form__input form__textarea" onChange={this.handleInputChange} value={this.state.templateContent} />
         </div>
         <div className="modal-form__form-group form-group">

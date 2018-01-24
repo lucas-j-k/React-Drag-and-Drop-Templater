@@ -34,11 +34,11 @@ class LoginForm extends Component {
       <form className="user-form" onSubmit={this.handleSubmit}>
         <h2 className="user-form__heading form__heading">Login</h2>
         <div className="form-group user-form__form-group">
-          <label for="email" className="user-form__label form__label">Email</label>
+          <label htmlFor="email" className="user-form__label form__label">Email</label>
           <input type="email" name="email" className="user-form__input form__input" value={this.state.email} onChange={this.handleInputChange} />
         </div>
         <div className="form-group user-form__form-group">
-          <label for="password" className="user-form__label form__label" >Password</label>
+          <label htmlFor="password" className="user-form__label form__label" >Password</label>
           <input type="password" name="password" className="user-form__input form__input" value={this.state.password} onChange={this.handleInputChange} />
         </div>
         <div className="form-group user-form__form-group">

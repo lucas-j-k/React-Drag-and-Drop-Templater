@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import Header from './components/header';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import axios from 'axios';
+import {Route, Switch } from 'react-router-dom'
 import ComposerPanel from './components/composer-panel';
 import TemplateTray from './components/template-tray';
 import Footer from './components/footer';
 import FlashBar from './components/flash-bar';
 import Modal from './components/modal';
+import Header from './components/header';
+
 
 //Import the master components for each route
 import Homepage from './components/homepage';
@@ -16,15 +18,13 @@ import SignUp from './components/sign-up'
 import CreateTemplateForm from './components/forms/create-template-form';
 import EditTemplateForm from './components/forms/edit-template-form';
 
-//Import the dummy data we are using in place of an API response.
-import templateData from './dummy-data/templates'
 
 class App extends Component {
 
   constructor(props){
     super(props);
     this.state= {
-      templates: templateData,
+      templates: [],
       composerContents: [],
       showModal: false,
       form: null,
@@ -43,6 +43,21 @@ class App extends Component {
     this.openCreateForm = this.openCreateForm.bind(this);
     this.openEditForm = this.openEditForm.bind(this);
 
+  }
+
+  componentDidMount(){
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then((response)=>{
+        let fetchedData = response.data.map((row) => {
+          let fetchedTemplate = {
+            id: row.id,
+            label: row.title,
+            body: row.body
+          };
+          return fetchedTemplate;
+        });
+        this.setState({ templates: fetchedData });
+      });
   }
 
   displayModal(){
@@ -66,7 +81,6 @@ class App extends Component {
       label: templateLabel,
       content: templateContent
     }
-    console.log("To Edit....", templateToEdit)
     this.setState({
       currentlyEditing: templateToEdit,
       form: "edit-template",

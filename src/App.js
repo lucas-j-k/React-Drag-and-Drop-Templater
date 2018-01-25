@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    axios.get(APIROOT + "all-templates/")
+    axios.get(APIROOT + "templates/")
       .then((response)=>{
 
         let fetchedData = response.data.map((record) => {
@@ -61,7 +61,6 @@ class App extends Component {
             label: record.label,
             body: parsedBody
           };
-          console.log(parsedBody);
           return fetchedTemplate;
         });
 

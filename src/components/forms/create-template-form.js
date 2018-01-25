@@ -21,11 +21,14 @@ class CreateTemplateForm extends Component {
 
   handleSubmit(event){
     event.preventDefault();
+    let splitContent = this.state.templateContent.split("\n");
+    let stringContent = JSON.stringify(splitContent);
     let submission = {
-      label: this.state.templateLabel,
-      content: this.state.templateContent
+      "label": this.state.templateLabel,
+      "content": stringContent
     }
-    console.log(submission);
+    console.log("submission/////////.", submission);
+    
   }
 
   render() {

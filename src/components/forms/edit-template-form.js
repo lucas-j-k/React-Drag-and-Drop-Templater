@@ -6,9 +6,12 @@ class EditTemplateForm extends Component {
 
   constructor(props){
     super(props);
+    let splitContent = this.props.currentlyEditing.content.join("\n");
+    console.log(splitContent);
     this.state={
+      //TODO - Split the content by new lines, so we can render each line in the textarea.
       templateLabel: this.props.currentlyEditing.label,
-      templateContent: this.props.currentlyEditing.content
+      templateContent: splitContent
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,11 +25,15 @@ class EditTemplateForm extends Component {
 
   handleSubmit(event){
     event.preventDefault();
+    let splitContent = this.state.templateContent.split("\n");
+    let stringContent = JSON.stringify(splitContent);
     let submission = {
-      label: this.state.templateLabel,
-      content: this.state.templateContent
+      "label": this.state.templateLabel,
+      "content": stringContent
     }
-    console.log(submission);
+    console.log("Edited submission-------- ", submission);
+    let parsedBody = JSON.parse(stringContent);
+    console.log("Parsed:    ", parsedBody);
   }
 
 

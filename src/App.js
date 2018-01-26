@@ -18,6 +18,9 @@ import SignUp from './components/sign-up'
 import CreateTemplateForm from './components/forms/create-template-form';
 import EditTemplateForm from './components/forms/edit-template-form';
 
+//Import data in lieu of an actual API response
+import templateData from './dummy-data/templates';
+
 
 //API root url
 const APIROOT = "http://localhost:3001/api/";
@@ -50,21 +53,17 @@ class App extends Component {
   }
 
   componentDidMount(){
-    axios.get(APIROOT + "templates/")
+    axios.get("data/templates.json")
       .then((response)=>{
-
-        let fetchedData = response.data.map((record) => {
-          let replacedBody = record.body.replace(/&quot;/g, '"');
-          let parsedBody = JSON.parse(replacedBody);
-          let fetchedTemplate = {
+        let templateArray = response.data.map((record)=>{
+          let newTemplate = {
             id: record.id,
             label: record.label,
-            body: parsedBody
+            body: record.body
           };
-          return fetchedTemplate;
+          return newTemplate;
         });
-
-        this.setState({ templates: fetchedData });
+        this.setState({templates:templateArray});
       });
   }
 

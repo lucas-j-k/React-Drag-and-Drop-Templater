@@ -2,22 +2,22 @@ var templates = [
   {
     id: 1,
     label: "Red",
-    body: "Red red red Red red red Red red red Red red red"
+    body: ["Red1 red1","Red2Red2","Red3 Red3 Red3"]
   },
   {
     id: 2,
     label: "Yellow",
-    body: "yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"
+    body: ["Yellow1","Yellow 2","Yellow3"]
   },
   {
     id: 3,
     label: "Blue",
-    body: "blue blue blue blue blue blue blue blue blue blue blue blue"
+    body: ["Blue 1","Blue 2","Blue 3"]
   },
   {
     id: 4,
     label: "Green",
-    body: "green green green green green green green green green green green green"
+    body: ["Green 1","Green 2","Green 3"]
   },
 
 ]

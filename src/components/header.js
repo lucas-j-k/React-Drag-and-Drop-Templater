@@ -14,20 +14,12 @@ class Header extends Component {
               <li className="header-bar__navlist-item"><Link className="header-bar__nav-link" to='/sign-up'>Sign Up</Link></li>
             </ul>
           </nav>
-          <div className="header-bar__user">UserName goes here</div>
+          <div className="header-bar__user">{this.props.user.firstName} {this.props.user.lastName}</div>
         </header>
     )
   }
 }
 
-
-function NavLink(props){
-  return (
-    <li className="header-bar__navlist-item">
-      <a href={props.url} className="header-bar__nav-link">{props.anchor}</a>
-    </li>
-  )
-}
 
 
 export default Header;

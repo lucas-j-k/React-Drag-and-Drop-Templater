@@ -18,8 +18,6 @@ import SignUp from './components/sign-up'
 import CreateTemplateForm from './components/forms/create-template-form';
 import EditTemplateForm from './components/forms/edit-template-form';
 
-//Import data in lieu of an actual API response
-import templateData from './dummy-data/templates';
 
 
 //API root url
@@ -32,6 +30,7 @@ class App extends Component {
     super(props);
     this.state= {
       templates: [],
+      user:{},
       composerContents: [],
       showModal: false,
       form: null,
@@ -50,6 +49,13 @@ class App extends Component {
     this.openCreateForm = this.openCreateForm.bind(this);
     this.openEditForm = this.openEditForm.bind(this);
 
+  }
+
+  componentWillMount(){
+    axios.get("data/user.json")
+      .then((response)=>{
+        this.setState({user:response.data});
+      })
   }
 
   componentDidMount(){
@@ -163,7 +169,7 @@ class App extends Component {
 
     return (
       <div className="App app-container">
-        <Header navigation={this.state.navigation} />
+        <Header user={this.state.user} />
         <FlashBar message={"Flash messages go in here"} />
         <Switch>
           <Route exact path='/' component={Homepage} />

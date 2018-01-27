@@ -20,10 +20,6 @@ import EditTemplateForm from './components/forms/edit-template-form';
 
 
 
-//API root url
-const APIROOT = "http://localhost:3001/api/";
-
-
 class App extends Component {
 
   constructor(props){
@@ -161,7 +157,7 @@ class App extends Component {
   clearComposer(){
     this.setState({
       composerContents: [],
-      clipboard: ""
+      clipboard: " "
     })
   }
 

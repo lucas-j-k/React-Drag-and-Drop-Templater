@@ -7,7 +7,7 @@ import Footer from './components/footer';
 import FlashBar from './components/flash-bar';
 import Modal from './components/modal';
 import Header from './components/header';
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 //Import the master components for each route
 import Homepage from './components/homepage';
@@ -31,6 +31,7 @@ class App extends Component {
     this.state= {
       templates: [],
       user:{},
+      clipboard:"Test clipboard!",
       composerContents: [],
       showModal: false,
       form: null,
@@ -160,7 +161,7 @@ class App extends Component {
       <Modal>
         <div className="modal">
           <div className="modal-body">
-            <span className="modal__close" onClick={ this.hideModal }><i class="fa fa-times modal__close-icon"></i></span>
+            <span title="Close Modal" className="modal__close" onClick={ this.hideModal }><i class="fa fa-times modal__close-icon"></i></span>
             {formToRender}
           </div>
         </div>
@@ -171,6 +172,9 @@ class App extends Component {
       <div className="App app-container">
         <Header user={this.state.user} />
         <FlashBar message={"Flash messages go in here"} />
+        <CopyToClipboard text={this.state.clipboard} onCopy={()=>{console.log(this.state.clipboard)}}>
+          <button className="button button--positive">COPY</button>
+        </CopyToClipboard>
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/app' render={() => (
@@ -189,7 +193,6 @@ class App extends Component {
           <Route exact path='/login' component={Login} />
           <Route exact path='/sign-up' component={SignUp} />
         </Switch>
-
         <Footer />
         {modalContent}
       </div>

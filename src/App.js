@@ -160,8 +160,8 @@ class App extends Component {
       <Modal>
         <div className="modal">
           <div className="modal-body">
+            <span className="modal__close" onClick={ this.hideModal }><i class="fa fa-times modal__close-icon"></i></span>
             {formToRender}
-            <button className="button button--negative modal__close" onClick={ this.hideModal }>Close Modal</button>
           </div>
         </div>
       </Modal>

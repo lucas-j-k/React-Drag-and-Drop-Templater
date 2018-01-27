@@ -46,6 +46,7 @@ class App extends Component {
     this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
     this.updateComposerContents = this.updateComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
+    this.updateClipboard = this.updateClipboard.bind(this);
     this.addToComposerContents = this.addToComposerContents.bind(this);
     this.openCreateForm = this.openCreateForm.bind(this);
     this.openEditForm = this.openEditForm.bind(this);
@@ -60,6 +61,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    console.log("Component did mount");
     axios.get("data/templates.json")
       .then((response)=>{
         let templateArray = response.data.map((record)=>{
@@ -72,6 +74,10 @@ class App extends Component {
         });
         this.setState({templates:templateArray});
       });
+  }
+
+  componentDidUpdate(){
+    console.log("Component Did Update");
   }
 
   displayModal(){
@@ -113,35 +119,53 @@ class App extends Component {
       }
       updatedComposerContents.push(snippetToAdd);
     }
-    this.setState({ composerContents: updatedComposerContents });
+    let updatedClipboard = this.updateClipboard(updatedComposerContents);
+    this.setState({
+      composerContents: updatedComposerContents,
+      clipboard: updatedClipboard
+    });
   }
 
   //Delete a specific snippet from the composer state array
   deleteSnippetFromComposer(index){
     let updatedComposerContents = this.state.composerContents.slice();
     updatedComposerContents.splice(index, 1);
+    let updatedClipboard = this.updateClipboard(updatedComposerContents);
     this.setState({
-      composerContents: updatedComposerContents
+      composerContents: updatedComposerContents,
+      clipboard: updatedClipboard
     });
   }
 
   //Reorder the composercontents state, based on the contents of the current composer panel.
   updateComposerContents(updatedComposerContents){
-    /* TODO - Concat the text values of each object in the composer contents, then pass it down as a new prop, so we can render it in the textarea to copy */
+    let updatedClipboard = this.updateClipboard(updatedComposerContents);
     this.setState({
-      composerContents: updatedComposerContents
+      composerContents: updatedComposerContents,
+      clipboard: updatedClipboard
     });
   }
+
+  //Function to loop through current templatecontents and build a string to populate the clipboard.
+  updateClipboard(composerContents){
+    let clipboardArray = composerContents.map((record)=>{
+      return record.text;
+    });
+    let clipboardString = clipboardArray.join("\n");
+    console.log("Updated clipboard:  ", clipboardString);
+    return clipboardString;
+  }
+
 
   //Clear the current composer contents state and re-render blank composer ComposerPanel
   clearComposer(){
     this.setState({
-      composerContents: []
+      composerContents: [],
+      clipboard: ""
     })
   }
 
   render() {
-
     let formToRender = "";
     // Check the state to see which form to load in the modalContent
     switch(this.state.form) {
@@ -161,7 +185,7 @@ class App extends Component {
       <Modal>
         <div className="modal">
           <div className="modal-body">
-            <span title="Close Modal" className="modal__close" onClick={ this.hideModal }><i class="fa fa-times modal__close-icon"></i></span>
+            <span title="Close Modal" className="modal__close" onClick={ this.hideModal }><i className="fa fa-times modal__close-icon"></i></span>
             {formToRender}
           </div>
         </div>

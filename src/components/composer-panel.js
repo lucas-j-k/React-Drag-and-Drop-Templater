@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Dragula from 'react-dragula';
 
-import ControlBar from './control-bar';
-
 class ComposerPanel extends Component {
 
   constructor(props) {
@@ -58,15 +56,10 @@ class ComposerPanel extends Component {
     });
     return (
       <div className="col-md-7 composer-panel__wrapper" onMouseUp={this.reorderComposerContents} >
-        <ControlBar
-          clearComposer={this.clearComposer}
-          populateClipboard={this.populateClipboard}
-          openCreateTemplateForm={this.openCreateTemplateForm}
-        />
         <div className="composer-panel__main" ref={(paraList)=>{ this.paraList = paraList }} >
           <div className="composer-panel__contents" ref={this.dragulaDecorator}>{composerContents}</div>
         </div>
-        
+
       </div>
     )
   }

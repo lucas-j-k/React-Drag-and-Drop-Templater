@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Route, Switch } from 'react-router-dom'
 import ComposerPanel from './components/composer-panel';
+import ControlBar from './components/control-bar';
 import TemplateTray from './components/template-tray';
 import Footer from './components/footer';
 import FlashBar from './components/flash-bar';
@@ -148,7 +149,6 @@ class App extends Component {
       return record.text;
     });
     let clipboardString = clipboardArray.join("\n");
-    console.log("Updated clipboard:  ", clipboardString);
     return clipboardString;
   }
 
@@ -198,25 +198,28 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/app' render={() => (
-            <div className="interface-wrapper">
-              <ComposerPanel
-                clipboard={this.state.clipboard}
-                composerContents={this.state.composerContents}
-                clearComposer={this.clearComposer}
-                openCreateTemplateForm={this.openCreateForm}
-                deleteSnippetFromComposer={this.deleteSnippetFromComposer}
-                updateComposerContents={this.updateComposerContents}
-              />
-              <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} openEditForm={this.openEditForm} />
-            </div>
-          )} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/sign-up' component={SignUp} />
-        </Switch>
-        <Footer />
-        {modalContent}
-      </div>
-    );
+            <div className="app-wrapper">
+              <ControlBar clearComposer={this.clearComposer} openCreateTemplateForm={this.openCreateForm} clipboard={this.state.clipboard} />
+              <div className="interface-wrapper">
+                <ComposerPanel
+                  clipboard={this.state.clipboard}
+                  composerContents={this.state.composerContents}
+                  clearComposer={this.clearComposer}
+                  openCreateTemplateForm={this.openCreateForm}
+                  deleteSnippetFromComposer={this.deleteSnippetFromComposer}
+                  updateComposerContents={this.updateComposerContents}
+                />
+                <TemplateTray templates={this.state.templates} handleTrayClick={this.addToComposerContents} openEditForm={this.openEditForm} />
+              </div>
+              </div>
+            )} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/sign-up' component={SignUp} />
+          </Switch>
+          <Footer />
+          {modalContent}
+        </div>
+      );
   }
 }
 

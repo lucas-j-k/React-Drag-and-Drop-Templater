@@ -23,11 +23,15 @@ class ControlBar extends Component {
     return (
       <div className="control-bar">
         <div className="control-bar__button-tray">
-          <CopyToClipboard text={this.props.clipboard}>
-            <button className="button button--positive">Copy</button>
-          </CopyToClipboard>
-          <button className="control-bar__button button button--negative" onClick={(e) => this.handleClearClick(e)}>Clear</button>
-          <button className="control-bar__button button button--positive" onClick={(e) => this.openCreateTemplateForm()}>Add Template</button>
+          <div className="control-bar__composer-buttons">
+            <CopyToClipboard text={this.props.clipboard}>
+              <button className="button button--positive">Copy</button>
+            </CopyToClipboard>
+            <button className="control-bar__button button button--negative" onClick={(e) => this.handleClearClick(e)}>Clear</button>
+          </div>
+          <div className="control-bar__tray-buttons">
+            <button className="control-bar__button button button--positive" onClick={(e) => this.openCreateTemplateForm()}>New Template</button>
+          </div>
         </div>
       </div>
     )

@@ -181,6 +181,18 @@ body {
   padding:0.3em;
 }
 
+.control-bar__button-tray {
+  display:flex;
+}
+
+.control-bar__composer-buttons {
+  width:70%;
+}
+
+.control-bar__tray-buttons {
+  width:30%;
+}
+
 .control-bar__button {
   margin-left: 1em;
   background: #090A0A;

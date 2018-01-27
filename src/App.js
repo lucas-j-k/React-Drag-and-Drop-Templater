@@ -192,9 +192,6 @@ class App extends Component {
       <div className="App app-container">
         <Header user={this.state.user} />
         <FlashBar message={"Flash messages go in here"} />
-        <CopyToClipboard text={this.state.clipboard} onCopy={()=>{console.log(this.state.clipboard)}}>
-          <button className="button button--positive">COPY</button>
-        </CopyToClipboard>
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/app' render={() => (

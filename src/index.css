@@ -26,7 +26,8 @@ body {
 
 .button {
   padding:0.4em 0.75em;
-  border-radius:0.5em;
+  display: inline-block;
+  border-radius:5px;
   background-color: #090A0A;
   color: #DBE0E4;
 }
@@ -51,9 +52,41 @@ body {
   background: #E83F1B;
 }
 
+.icon-button {
+  padding:0px;
+}
+
+.icon-button__text {
+  padding:0.5em 0.75em;
+  display: inline-block;
+}
+
+.icon-button__icon-wrapper {
+  padding: 0.5em;
+  display: inline-block;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin:-2px;
+}
+
+
+.icon-button__icon-wrapper--positive {
+  background-color: #065408;
+}
+
+.icon-button__icon-wrapper--negative {
+  background-color: #E83F1B;
+}
+
+.template-tray-button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .app-container {
   width:100%;
 }
+
 
 
 
@@ -191,6 +224,7 @@ body {
 
 .control-bar__tray-buttons {
   width:30%;
+  text-align: center;
 }
 
 .control-bar__button {

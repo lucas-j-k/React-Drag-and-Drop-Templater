@@ -244,7 +244,7 @@ body {
 }
 
 .template-tray__list-item {
-  padding: 0.3em 0.75em;
+  /* padding: 0.3em 0.75em; */
   display:flex;
 }
 
@@ -260,11 +260,13 @@ body {
 
 .template-tray__label-text {
   width:80%;
+  padding: 0.3em 0.75em;
 }
 
 .template-tray__edit-button {
   width:20%;
   text-align: center;
+  padding: 0.3em 0.75em;
 }
 
 .template-tray__list-item:hover .template-tray__edit-icon {

@@ -14,7 +14,7 @@ class Header extends Component {
               <li className="header-bar__navlist-item"><Link className="header-bar__nav-link" to='/sign-up'>Sign Up</Link></li>
             </ul>
           </nav>
-          <div className="header-bar__user">{this.props.user.firstName} {this.props.user.lastName}</div>
+          <div className="header-bar__user"><i className="fa fa-user-o" aria-hidden="true"></i> {this.props.user.firstName} {this.props.user.lastName} </div>
         </header>
     )
   }

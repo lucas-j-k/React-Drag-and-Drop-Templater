@@ -44,6 +44,9 @@ class Homepage extends Component {
             </div>
           </section>
           </div>
+          <div className="homepage__cta">
+            <div className="button button--positive homepage__cta-button">Get Started</div>
+          </div>
       </div>
     )
   }

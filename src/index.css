@@ -333,7 +333,7 @@ body {
 /* =========================== */
 
 form {
-
+ 
 }
 
 .form__heading {
@@ -370,6 +370,7 @@ form {
 
 .user-form {
   margin-bottom:10em;
+  margin-top:1em;
   margin-left: auto;
   margin-right: auto;
   width:50%;
@@ -449,6 +450,14 @@ form {
   margin:0 auto;
 }
 
+.homepage__cta {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.homepage__cta-button {
+  padding: 1em;
+}
 
 /* =========================== */
 /* DRAG AND DROP */

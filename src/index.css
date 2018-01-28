@@ -21,7 +21,8 @@ body {
   margin: 0;
   padding: 0;
   width:100%;
-  background-color: #090A0A;
+  /* background-color: #090A0A; */
+  background-color: #111414;
 }
 
 .button {
@@ -98,7 +99,7 @@ body {
   display:flex;
   justify-content: space-between;
   padding:0.3em;
-  margin-bottom: 1em;
+  background-color: #090A0A;
 }
 
 .header-bar__nav {
@@ -211,7 +212,7 @@ body {
 
 .control-bar {
   width:100%;
-  padding:0.3em;
+  padding:0.5em 0.25em;
 }
 
 .control-bar__button-tray {
@@ -237,6 +238,7 @@ body {
   width:30%;
   height: 450px;
   overflow-y: scroll;
+  background-color: #090A0A;
 }
 
 .template-tray__list {
@@ -391,10 +393,67 @@ form {
 }
 
 
+/* =========================== */
+/* HOMEPAGE */
+/* =========================== */
+
+.homepage__wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.homepage__title {
+  font-size: 2em;
+  text-align: center;
+  padding: 0.5em 0;
+}
+
+
+.homepage-section {
+  width:25%;
+  padding:1em;
+}
+
+.homepage-section__icon-wrapper {
+  text-align: center;
+  padding:1em;
+}
+
+.homepage-section__icon {
+  font-size:3em;
+  height:3em;
+  width:3em;
+  line-height: 3em;
+  border:2px solid #DBE0E4;
+  border-radius:50%;
+  text-align: center;
+  background-color: #2d3133;
+}
+
+.homepage-section__heading {
+  font-size: 1.5em;
+  text-align: center;
+  border-bottom: 1px solid #DBE0E4;
+  width:80%;
+  margin:0 auto;
+  margin-bottom:0.5em;
+}
+
+.homepage-section__text {
+
+}
+
+.homepage-section__para {
+  text-align: center;
+  width:80%;
+  margin:0 auto;
+}
+
 
 /* =========================== */
 /* DRAG AND DROP */
 /* =========================== */
+
 
 .gu-mirror {
   display:none;

@@ -31,6 +31,7 @@ class App extends Component {
       clipboard:"Test clipboard!",
       composerContents: [],
       showModal: false,
+      flash:null,
       form: null,
       currentlyEditing: {
         id: "",
@@ -40,6 +41,7 @@ class App extends Component {
     }
     this.displayModal = this.displayModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.flash = this.flash.bind(this);
     this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
     this.updateComposerContents = this.updateComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
@@ -59,6 +61,7 @@ class App extends Component {
 
   componentDidMount(){
     console.log("Component did mount");
+    //TODO - change so we import from a javascript import rather than a json file.]
     axios.get("data/templates.json")
       .then((response)=>{
         let templateArray = response.data.map((record)=>{
@@ -119,7 +122,8 @@ class App extends Component {
     let updatedClipboard = this.updateClipboard(updatedComposerContents);
     this.setState({
       composerContents: updatedComposerContents,
-      clipboard: updatedClipboard
+      clipboard: updatedClipboard,
+      flash: "Template added"
     });
   }
 
@@ -157,8 +161,16 @@ class App extends Component {
   clearComposer(){
     this.setState({
       composerContents: [],
-      clipboard: " "
+      clipboard: " ",
+      flash: "Cleared"
     })
+  }
+
+  //Add a flash message to the state, so we can pass it into the flashbar component.
+  flash(message){
+    this.setState({
+      flash:message
+    });
   }
 
   render() {
@@ -191,12 +203,12 @@ class App extends Component {
     return (
       <div className="App app-container">
         <Header user={this.state.user} />
-        <FlashBar message={"Flash messages go in here"} />
+        <FlashBar message={this.state.flash} />
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/app' render={() => (
             <div className="app-wrapper">
-              <ControlBar clearComposer={this.clearComposer} openCreateTemplateForm={this.openCreateForm} clipboard={this.state.clipboard} />
+              <ControlBar clearComposer={this.clearComposer} openCreateTemplateForm={this.openCreateForm} clipboard={this.state.clipboard} flash={this.flash} />
               <div className="interface-wrapper">
                 <ComposerPanel
                   clipboard={this.state.clipboard}

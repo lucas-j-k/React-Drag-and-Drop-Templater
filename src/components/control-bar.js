@@ -7,10 +7,20 @@ class ControlBar extends Component {
     super(props)
     this.handleClearClick = this.handleClearClick.bind(this);
     this.openCreateTemplateForm = this.openCreateTemplateForm.bind(this);
+    this.handleCopy = this.handleCopy.bind(this);
   }
 
   handleClearClick(e){
     this.props.clearComposer();
+  }
+
+  handleCopy(result, message){
+    if(result){
+      this.props.flash(message);
+    } else {
+      this.props.flash("Copy failed");
+    }
+
   }
 
 
@@ -25,7 +35,7 @@ class ControlBar extends Component {
         <div className="control-bar__button-tray">
           <div className="control-bar__composer-buttons">
 
-            <CopyToClipboard text={this.props.clipboard}>
+            <CopyToClipboard text={this.props.clipboard} onCopy={(text, result) => {this.handleCopy(result, "Copied")}}>
               <div className="icon-button button button--positive control-bar__button">
                 <span className="icon-button__text">Copy</span>
                 <span className="icon-button__icon-wrapper icon-button__icon-wrapper--positive">

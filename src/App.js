@@ -239,6 +239,7 @@ class App extends Component {
           </Switch>
           <Footer />
           {modalContent}
+          <div className="mediaquery-blackout"><p className="util-center util-generic-p">This app is designed for desktop use, please resize the browser window, or try again on a larger screen.</p></div>
         </div>
       );
   }

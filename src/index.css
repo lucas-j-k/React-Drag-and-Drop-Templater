@@ -29,6 +29,24 @@ body {
   padding-top:2em;
 }
 
+.mediaquery-blackout {
+  position: fixed;
+  padding: 2em;
+  background-color: #111414;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  display:none;
+}
+
+@media screen and (max-width: 700px) {
+  .mediaquery-blackout {
+    display:block;
+  }
+}
+
+
 /* Utilty classes */
 .util-center {
   margin: 0 auto;
@@ -112,6 +130,8 @@ body {
 .app-container {
   width:100%;
 }
+
+
 
 
 

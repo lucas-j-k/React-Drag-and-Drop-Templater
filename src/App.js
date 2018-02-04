@@ -14,6 +14,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import Homepage from './components/homepage';
 import Login from './components/login'
 import SignUp from './components/sign-up'
+import PageNotFound from './components/page-not-found'
 
 //Import the form modules
 import CreateTemplateForm from './components/forms/create-template-form';
@@ -234,6 +235,7 @@ class App extends Component {
             )} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/sign-up' component={SignUp} />
+            <Route component={PageNotFound} />
           </Switch>
           <Footer />
           {modalContent}

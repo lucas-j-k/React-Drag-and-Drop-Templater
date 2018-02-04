@@ -25,6 +25,31 @@ body {
   background-color: #111414;
 }
 
+.body-section {
+  padding-top:2em;
+}
+
+/* Utilty classes */
+.util-center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.util-generic-h1 {
+  font-size: 3em;
+  padding:0.2em;
+}
+
+.util-generic-h2 {
+  font-size: 2.5em;
+  padding:0.2em;
+}
+
+.util-generic-p {
+  font-size:1.2em;
+  padding:0.2em;
+}
+
 .button {
   padding:0.4em 0.75em;
   display: inline-block;

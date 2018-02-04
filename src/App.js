@@ -19,7 +19,9 @@ import SignUp from './components/sign-up'
 import CreateTemplateForm from './components/forms/create-template-form';
 import EditTemplateForm from './components/forms/edit-template-form';
 
-
+//Import dummy data from js modules to populate the app to begin with (since we are not hooked up to an api at this point)
+import templateData from './dummy-data/templates';
+import userData from './dummy-data/user';
 
 class App extends Component {
 
@@ -52,33 +54,24 @@ class App extends Component {
 
   }
 
-  componentWillMount(){
-    axios.get("data/user.json")
-      .then((response)=>{
-        this.setState({user:response.data});
-      })
-  }
+
 
   componentDidMount(){
-    console.log("Component did mount");
-    //TODO - change so we import from a javascript import rather than a json file.]
-    axios.get("data/templates.json")
-      .then((response)=>{
-        let templateArray = response.data.map((record)=>{
-          let newTemplate = {
-            id: record.id,
-            label: record.label,
-            body: record.body
-          };
-          return newTemplate;
-        });
-        this.setState({templates:templateArray});
-      });
+    //Map through the dummy template data and populate the state array with it.
+    let templateArray = templateData.map((record)=>{
+      let newTemplate = {
+        id: record.id,
+        label: record.label,
+        body: record.body
+      };
+      return newTemplate;
+    });
+    this.setState({
+      templates: templateArray,
+      user: userData
+    })
   }
 
-  componentDidUpdate(){
-    console.log("Component Did Update");
-  }
 
   displayModal(){
     this.setState({ showModal:true });

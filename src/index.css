@@ -135,29 +135,35 @@ body {
 
 
 .flash-messages__container {
-  width:100%;
+  width:300px;
+  left:50%;
+  margin-left:-150px;
+  margin-top:5px;
   position:absolute;
-  margin-bottom: 1em;
+  background-color: #065408;
+  border-radius: 5px;
 }
 
 .flash-messages__message {
-  width:80%;
+  width:100%;
   margin: auto;
+  display:flex;
 }
 
+
 .flash-message__message-text {
-  width:40%;
+  width:80%;
   margin:auto;
   padding:0.75em;
   text-align: center;
 }
 
 .flash-message__message--positive {
-  border: 1px #56FB0D solid;
+
 }
 
 .flash-message__message--negative {
-  border: 2px #E83F1B solid;
+
 }
 
 

@@ -6,8 +6,8 @@ class FlashBar extends Component {
     //run  a ternary check on showFlash in props, to see whether to render the flash html or nothing
     let flashHTML = this.props.showFlash ? (
         <div className="flash-messages__container">
-          <div className="flash-messages__message">
-            <p className="flash-message__message-text flash-message__message--positive">
+          <div className="flash-messages__message flash-message__message--positive">
+            <p className="flash-message__message-text">
               {this.props.message}
             </p>
           </div>

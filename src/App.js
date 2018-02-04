@@ -172,7 +172,7 @@ class App extends Component {
           flash: null,
           showFlash:false
          })
-      }, 2000)
+      }, 1000)
 
     });
   }

@@ -2,36 +2,19 @@ import React, { Component } from 'react';
 
 class FlashBar extends Component {
 
-  constructor(props){
-    super(props);
-    this.state= {
-      message: this.props.message
-    }
-  }
-
-  componentWillReceiveProps(nextProps){
-    this.setState({
-      message: nextProps.message
-    });
-    window.setTimeout(()=>{
-      this.setState({
-        message:null
-      })
-    }, 2500);
-  }
-
   render(){
-    return (
-      <div className="flash-messages__container">
-        <div className="flash-messages__message">
-          <p className="flash-message__message-text flash-message__message--positive">
-            {this.state.message}
-          </p>
+    //run  a ternary check on showFlash in props, to see whether to render the flash html or nothing
+    let flashHTML = this.props.showFlash ? (
+        <div className="flash-messages__container">
+          <div className="flash-messages__message">
+            <p className="flash-message__message-text flash-message__message--positive">
+              {this.props.message}
+            </p>
+          </div>
         </div>
-      </div>
-    )
-  }
-
+      ) : null
+      return flashHTML;
+    }
 }
 
 export default FlashBar;

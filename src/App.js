@@ -34,6 +34,7 @@ class App extends Component {
       composerContents: [],
       showModal: false,
       flash:null,
+      showFlash:false,
       form: null,
       currentlyEditing: {
         id: "",
@@ -44,6 +45,7 @@ class App extends Component {
     this.displayModal = this.displayModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.flash = this.flash.bind(this);
+    this.clearFlash = this.clearFlash.bind(this);
     this.deleteSnippetFromComposer = this.deleteSnippetFromComposer.bind(this);
     this.updateComposerContents = this.updateComposerContents.bind(this);
     this.clearComposer = this.clearComposer.bind(this);
@@ -116,7 +118,6 @@ class App extends Component {
     this.setState({
       composerContents: updatedComposerContents,
       clipboard: updatedClipboard,
-      flash: "Template added"
     });
   }
 
@@ -155,15 +156,31 @@ class App extends Component {
     this.setState({
       composerContents: [],
       clipboard: " ",
-      flash: "Cleared"
+    }, ()=>{
+      this.flash("Cleared");
     })
   }
 
   //Add a flash message to the state, so we can pass it into the flashbar component.
   flash(message){
     this.setState({
-      flash:message
+      flash:message,
+      showFlash: true
+    }, ()=>{
+      window.setTimeout(()=>{
+        this.setState({
+          flash: null,
+          showFlash:false
+         })
+      }, 2000)
+
     });
+  }
+
+  //Clear the flash message stored on the main app state, to avoid it constantly being passed down to flashbar with every rerender
+  clearFlash(){
+    console.log("Cleaed flash at app level");
+    this.setState({flash: null});
   }
 
   render() {
@@ -196,7 +213,7 @@ class App extends Component {
     return (
       <div className="App app-container">
         <Header user={this.state.user} />
-        <FlashBar message={this.state.flash} />
+        <FlashBar message={this.state.flash} showFlash={this.state.showFlash} />
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/app' render={() => (

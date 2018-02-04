@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 
 
 class Homepage extends Component {
@@ -45,7 +45,7 @@ class Homepage extends Component {
           </section>
           </div>
           <div className="homepage__cta">
-            <div className="button button--positive homepage__cta-button">Get Started</div>
+            <Link className="button button--positive homepage__cta-button" to='/app'>Get Started</Link>
           </div>
       </div>
     )
